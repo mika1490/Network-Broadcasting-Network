@@ -10,7 +10,7 @@ const server = net.createServer((socket) => {
 
   // connections.write('hi');
   connections.push(socket);
-
+  
   socket.write('What is your Username');
   socket.loggedName = {};
   socket.loggedName.userName = null;

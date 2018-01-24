@@ -10,7 +10,7 @@ process.stdin.pipe(client);
 
 client.on('data', (data) => {
   //display info received from server
-  console.log('Received: ' + data); 
+  console.log(data.toString()); 
 });
 
 client.on('close', () => {
