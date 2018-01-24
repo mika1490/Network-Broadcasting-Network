@@ -2,7 +2,6 @@ const net = require('net');
 
 const client = net.connect(10337, '0.0.0.0', () => {
   console.log('Connected'); //acknowledge socket connection
-  client.write('Hello, Server!') // send info to server
 
 process.stdin.pipe(client);
 

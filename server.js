@@ -2,7 +2,6 @@ const net = require('net');
 
 //creates an empty array to push the data into
 let connections = [];
-
 //connects server
 const server = net.createServer((socket) => {
   // connections.write('hi');
@@ -16,20 +15,18 @@ const server = net.createServer((socket) => {
     console.log(data);
     //makes sure that client doesnt receive their own message 
     connections.filter(element => {
-      return element !== socket;
-      console.log(data);
-
-    })
+        return element !== socket;
+      })
       .forEach(element => {
         element.write(data)
       });
 
 
-    socket.on('end', () => {
-      //splice makes sure that client doesnt receive their own message
-      connections.splice(connections.indexOf(socket, 1));
-      console.log('Client Disconnected')
-    });
+  });
+  socket.on('end', () => {
+    //splice makes sure that client doesnt receive their own message
+    connections.splice(connections.indexOf(socket, 1));
+    console.log('Client Disconnected')
   });
 });
 
@@ -38,5 +35,7 @@ server.listen(10337, '0.0.0.0', () => {
   console.log('You Are Now Connected');
 });
 
-
+// if (socket.userName) {
+//   alert('Enter Your User Name');
+// }
 
